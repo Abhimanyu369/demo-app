@@ -1,8 +1,26 @@
-# React + Vite
+# Failure Mode & Effect Analysis (FMEA) React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application for performing Failure Mode & Effect Analysis (FMEA), built using **Vite**. The app allows users to add, view, and download failure mode data.
 
-Currently, two official plugins are available:
+## Features
+- Add Failure Modes with detailed fields.
+- View data in a well-structured table.
+- View details of each failure mode in a modal.
+- Download data as a `.csv` file.
+- Styled using Ant Design and Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## Prerequisites
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (Version 14 or higher)
+- npm or yarn
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd <repository-directory>
