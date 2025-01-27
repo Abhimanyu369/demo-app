@@ -60,11 +60,21 @@ export default function AddModal({
                                 values.failureModes[index].potentialFailureMode
                               }
                             />
-                            {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].potentialFailureMode && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].potentialFailureMode && (
-                                    <div className="text-red-500">{errors.failureModes[index].potentialFailureMode}</div>
-                                )
-                            }
+                            {touched.failureModes &&
+                              touched.failureModes[index] &&
+                              touched.failureModes[index]
+                                .potentialFailureMode &&
+                              errors.failureModes &&
+                              errors.failureModes[index] &&
+                              errors.failureModes[index]
+                                .potentialFailureMode && (
+                                <div className="text-red-500">
+                                  {
+                                    errors.failureModes[index]
+                                      .potentialFailureMode
+                                  }
+                                </div>
+                              )}
                           </Form.Item>
                           <Form.Item
                             label="Potential Failure Effects"
@@ -78,11 +88,21 @@ export default function AddModal({
                                   .potentialFailureEffects
                               }
                             />
-                            {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].potentialFailureEffects && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].potentialFailureEffects && (
-                                    <div className="text-red-500">{errors.failureModes[index].potentialFailureEffects}</div>
-                                )
-                            }
+                            {touched.failureModes &&
+                              touched.failureModes[index] &&
+                              touched.failureModes[index]
+                                .potentialFailureEffects &&
+                              errors.failureModes &&
+                              errors.failureModes[index] &&
+                              errors.failureModes[index]
+                                .potentialFailureEffects && (
+                                <div className="text-red-500">
+                                  {
+                                    errors.failureModes[index]
+                                      .potentialFailureEffects
+                                  }
+                                </div>
+                              )}
                           </Form.Item>
                           <Form.Item label="Potential Causes" className="mb-2">
                             <Input
@@ -90,11 +110,16 @@ export default function AddModal({
                               onChange={handleChange}
                               value={values.failureModes[index].potentialCauses}
                             />
-                            {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].potentialCauses && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].potentialCauses && (
-                                    <div className="text-red-500">{errors.failureModes[index].potentialCauses}</div>
-                                )
-                            }
+                            {touched.failureModes &&
+                              touched.failureModes[index] &&
+                              touched.failureModes[index].potentialCauses &&
+                              errors.failureModes &&
+                              errors.failureModes[index] &&
+                              errors.failureModes[index].potentialCauses && (
+                                <div className="text-red-500">
+                                  {errors.failureModes[index].potentialCauses}
+                                </div>
+                              )}
                           </Form.Item>
                           <Form.Item label="Current Controls" className="mb-2">
                             <Input
@@ -102,11 +127,16 @@ export default function AddModal({
                               onChange={handleChange}
                               value={values.failureModes[index].currentControls}
                             />
-                            {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].currentControls && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].currentControls && (
-                                    <div className="text-red-500">{errors.failureModes[index].currentControls}</div>
-                                )
-                            }
+                            {touched.failureModes &&
+                              touched.failureModes[index] &&
+                              touched.failureModes[index].currentControls &&
+                              errors.failureModes &&
+                              errors.failureModes[index] &&
+                              errors.failureModes[index].currentControls && (
+                                <div className="text-red-500">
+                                  {errors.failureModes[index].currentControls}
+                                </div>
+                              )}
                           </Form.Item>
                           <div className="col-span-2 grid grid-cols-4 gap-4">
                             <Form.Item label="SEV" className="mb-2">
@@ -125,11 +155,16 @@ export default function AddModal({
                                 min={1}
                                 max={10}
                               />
-                              {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].sev && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].sev && (
-                                    <div className="text-red-500">{errors.failureModes[index].sev}</div>
-                                )
-                              }
+                              {touched.failureModes &&
+                                touched.failureModes[index] &&
+                                touched.failureModes[index].sev &&
+                                errors.failureModes &&
+                                errors.failureModes[index] &&
+                                errors.failureModes[index].sev && (
+                                  <div className="text-red-500">
+                                    {errors.failureModes[index].sev}
+                                  </div>
+                                )}
                             </Form.Item>
                             <Form.Item label="OCC" className="mb-2">
                               <InputNumber
@@ -147,11 +182,16 @@ export default function AddModal({
                                 min={1}
                                 max={10}
                               />
-                              {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].occ && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].occ && (
-                                    <div className="text-red-500">{errors.failureModes[index].occ}</div>
-                                )
-                              }
+                              {touched.failureModes &&
+                                touched.failureModes[index] &&
+                                touched.failureModes[index].occ &&
+                                errors.failureModes &&
+                                errors.failureModes[index] &&
+                                errors.failureModes[index].occ && (
+                                  <div className="text-red-500">
+                                    {errors.failureModes[index].occ}
+                                  </div>
+                                )}
                             </Form.Item>
                             <Form.Item label="DET" className="mb-2">
                               <InputNumber
@@ -169,11 +209,16 @@ export default function AddModal({
                                 min={1}
                                 max={10}
                               />
-                              {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].det && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].det && (
-                                    <div className="text-red-500">{errors.failureModes[index].det}</div>
-                                )
-                              }
+                              {touched.failureModes &&
+                                touched.failureModes[index] &&
+                                touched.failureModes[index].det &&
+                                errors.failureModes &&
+                                errors.failureModes[index] &&
+                                errors.failureModes[index].det && (
+                                  <div className="text-red-500">
+                                    {errors.failureModes[index].det}
+                                  </div>
+                                )}
                             </Form.Item>
                             <Form.Item label="RPN" className="mb-2">
                               <InputNumber
@@ -189,11 +234,16 @@ export default function AddModal({
                                 }
                                 value={values.failureModes[index].rpn}
                               />
-                              {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].rpn && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].rpn && (
-                                    <div className="text-red-500">{errors.failureModes[index].rpn}</div>
-                                )
-                              }
+                              {touched.failureModes &&
+                                touched.failureModes[index] &&
+                                touched.failureModes[index].rpn &&
+                                errors.failureModes &&
+                                errors.failureModes[index] &&
+                                errors.failureModes[index].rpn && (
+                                  <div className="text-red-500">
+                                    {errors.failureModes[index].rpn}
+                                  </div>
+                                )}
                             </Form.Item>
                           </div>
                           <Form.Item
@@ -207,11 +257,19 @@ export default function AddModal({
                                 values.failureModes[index].actionsRecommended
                               }
                             />
-                            {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].actionsRecommended && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].actionsRecommended && (
-                                    <div className="text-red-500">{errors.failureModes[index].actionsRecommended}</div>
-                                )
-                            }
+                            {touched.failureModes &&
+                              touched.failureModes[index] &&
+                              touched.failureModes[index].actionsRecommended &&
+                              errors.failureModes &&
+                              errors.failureModes[index] &&
+                              errors.failureModes[index].actionsRecommended && (
+                                <div className="text-red-500">
+                                  {
+                                    errors.failureModes[index]
+                                      .actionsRecommended
+                                  }
+                                </div>
+                              )}
                           </Form.Item>
                           <div className="col-span-2 grid grid-cols-4 gap-4">
                             <Form.Item label="SEV" className="mb-2">
@@ -230,11 +288,16 @@ export default function AddModal({
                                 min={1}
                                 max={10}
                               />
-                              {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].sevRec && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].sevRec && (
-                                    <div className="text-red-500">{errors.failureModes[index].sevRec}</div>
-                                )
-                              }
+                              {touched.failureModes &&
+                                touched.failureModes[index] &&
+                                touched.failureModes[index].sevRec &&
+                                errors.failureModes &&
+                                errors.failureModes[index] &&
+                                errors.failureModes[index].sevRec && (
+                                  <div className="text-red-500">
+                                    {errors.failureModes[index].sevRec}
+                                  </div>
+                                )}
                             </Form.Item>
                             <Form.Item label="OCC" className="mb-2">
                               <InputNumber
@@ -252,11 +315,16 @@ export default function AddModal({
                                 min={1}
                                 max={10}
                               />
-                              {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].occRec && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].occRec && (
-                                    <div className="text-red-500">{errors.failureModes[index].occRec}</div>
-                                )
-                              }
+                              {touched.failureModes &&
+                                touched.failureModes[index] &&
+                                touched.failureModes[index].occRec &&
+                                errors.failureModes &&
+                                errors.failureModes[index] &&
+                                errors.failureModes[index].occRec && (
+                                  <div className="text-red-500">
+                                    {errors.failureModes[index].occRec}
+                                  </div>
+                                )}
                             </Form.Item>
                             <Form.Item label="DET" className="mb-2">
                               <InputNumber
@@ -274,11 +342,16 @@ export default function AddModal({
                                 min={1}
                                 max={10}
                               />
-                              {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].detRec && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].detRec && (
-                                    <div className="text-red-500">{errors.failureModes[index].detRec}</div>
-                                )
-                              }
+                              {touched.failureModes &&
+                                touched.failureModes[index] &&
+                                touched.failureModes[index].detRec &&
+                                errors.failureModes &&
+                                errors.failureModes[index] &&
+                                errors.failureModes[index].detRec && (
+                                  <div className="text-red-500">
+                                    {errors.failureModes[index].detRec}
+                                  </div>
+                                )}
                             </Form.Item>
                             <Form.Item label="RPN" className="mb-2">
                               <InputNumber
@@ -294,23 +367,30 @@ export default function AddModal({
                                 }
                                 value={values.failureModes[index].rpnRec}
                               />
-                              {
-                                touched.failureModes && touched.failureModes[index] && touched.failureModes[index].rpnRec && errors.failureModes && errors.failureModes[index] && errors.failureModes[index].rpnRec && (
-                                    <div className="text-red-500">{errors.failureModes[index].rpnRec}</div>
-                                )
-                              }
+                              {touched.failureModes &&
+                                touched.failureModes[index] &&
+                                touched.failureModes[index].rpnRec &&
+                                errors.failureModes &&
+                                errors.failureModes[index] &&
+                                errors.failureModes[index].rpnRec && (
+                                  <div className="text-red-500">
+                                    {errors.failureModes[index].rpnRec}
+                                  </div>
+                                )}
                             </Form.Item>
                           </div>
                         </div>
 
-                        <Button
-                          type="primary"
-                          danger
-                          icon={<DeleteOutlined />}
-                          onClick={() => arrayHelpers.remove(index)}
-                        >
-                          Remove
-                        </Button>
+                        {values?.failureModes?.length > 1 && (
+                          <Button
+                            type="primary"
+                            danger
+                            icon={<DeleteOutlined />}
+                            onClick={() => arrayHelpers.remove(index)}
+                          >
+                            Remove
+                          </Button>
+                        )}
                       </div>
                     ))}
                     <Button
