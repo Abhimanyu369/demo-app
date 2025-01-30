@@ -4,6 +4,7 @@ import ViewModal from "../components/ViewModal";
 import AddModal from "../components/AddModal";
 import { INITIAL_VALUES, VALIDATION_SCHEMA } from "../utils/constants";
 import { handleDownload } from "../utils/helpers";
+import { EditOutlined } from "@ant-design/icons";
 
 const FmeaPage = () => {
   const formikRef = useRef();
@@ -11,6 +12,7 @@ const FmeaPage = () => {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [viewData, setViewData] = useState(null);
   const [data, setData] = useState([]);
+  const [editData, setEditData] = useState(null);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -18,13 +20,32 @@ const FmeaPage = () => {
       formikRef.current.resetForm();
     }
   };
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setEditData(null);
+  };
 
   const handleSubmit = (values) => {
-    const updatedData = [values, ...data];
-    setData(updatedData);
-    message.success("Data saved successfully!");
+    if (editData) {
+      // Editing existing data
+      const updatedData = data.map((item) =>
+        item.processStep === editData.processStep ? values : item
+      );
+      setData(updatedData);
+      message.success("Entry updated successfully!");
+    } else {
+      // Adding new entry
+      const updatedData = [values, ...data];
+      setData(updatedData);
+      message.success("New entry added successfully!");
+    }
     closeModal();
+  };
+
+  // Handle Edit Modal
+  const handleEdit = (record) => {
+    setEditData(record);
+    setIsModalOpen(true);
   };
 
   const openViewModal = (record) => {
@@ -145,13 +166,19 @@ const FmeaPage = () => {
       title: "Actions",
       key: "actions",
       render: (_, record) => (
-        <div>
+        <div className="flex gap-1">
           <Button
             type="link"
             onClick={() => openViewModal(record)}
-            className="mr-2"
           >
             View
+          </Button>
+          <Button
+            type="link"
+            icon={<EditOutlined />}
+            onClick={() => handleEdit(record)}
+          >
+            Edit
           </Button>
         </div>
       ),
@@ -168,7 +195,11 @@ const FmeaPage = () => {
         <Button type="primary" onClick={openModal}>
           Add New Entry
         </Button>
-        <Button type="default" onClick={() => handleDownload(data, message)} className="ml-2">
+        <Button
+          type="default"
+          onClick={() => handleDownload(data, message)}
+          className="ml-2"
+        >
           Download Data
         </Button>
       </div>
@@ -184,7 +215,7 @@ const FmeaPage = () => {
         isModalOpen={isModalOpen}
         closeModal={closeModal}
         formikRef={formikRef}
-        initialValues={INITIAL_VALUES}
+        initialValues={editData || INITIAL_VALUES}
         validationSchema={VALIDATION_SCHEMA}
         handleSubmit={handleSubmit}
       />

@@ -1,70 +1,113 @@
-import { Modal } from "antd";
+import { Modal, Table } from "antd";
 import PropTypes from "prop-types";
 
-export default function ViewModal({
-  isViewModalOpen,
-  closeViewModal,
-  viewData,
-}) {
+export default function ViewModal({ isViewModalOpen, closeViewModal, viewData }) {
+  const columns = [
+    {
+      title: "Process / Process Step",
+      dataIndex: "processStep",
+      key: "processStep",
+      render: (_, record) => ({
+        children: record.processStep,
+        props: { rowSpan: record.isFirst ? record.rowSpan : 0 },
+      }),
+    },
+    {
+      title: "Potential Failure Mode",
+      dataIndex: "potentialFailureMode",
+      key: "potentialFailureMode",
+    },
+    {
+      title: "Potential Failure Effects",
+      dataIndex: "potentialFailureEffects",
+      key: "potentialFailureEffects",
+    },
+    {
+      title: "SEV",
+      dataIndex: "sev",
+      key: "sev",
+    },
+    {
+      title: "OCC",
+      dataIndex: "occ",
+      key: "occ",
+    },
+    {
+      title: "DET",
+      dataIndex: "det",
+      key: "det",
+    },
+    {
+      title: "RPN",
+      dataIndex: "rpn",
+      key: "rpn",
+    },
+    {
+      title: "Actions Recommended",
+      dataIndex: "actionsRecommended",
+      key: "actionsRecommended",
+    },
+    {
+      title: "SEV",
+      dataIndex: "sevRec",
+      key: "sevRec",
+    },
+    {
+      title: "OCC",
+      dataIndex: "occRec",
+      key: "occRec",
+    },
+    {
+      title: "DET",
+      dataIndex: "detRec",
+      key: "detRec",
+    },
+    {
+      title: "RPN",
+      dataIndex: "rpnRec",
+      key: "rpnRec",
+    },
+  ];
+
+  // Transforming the data for table display
+  const tableData = [];
+  if (viewData) {
+    viewData.failureModes.forEach((mode, index) => {
+      tableData.push({
+        key: `${viewData.processStep}-${index}`,
+        processStep: index === 0 ? viewData.processStep : "",
+        isFirst: index === 0,
+        rowSpan: viewData.failureModes.length,
+        potentialFailureMode: mode.potentialFailureMode,
+        potentialFailureEffects: mode.potentialFailureEffects,
+        sev: mode.sev,
+        occ: mode.occ,
+        det: mode.det,
+        rpn: mode.rpn,
+        actionsRecommended: mode.actionsRecommended,
+        sevRec: mode.sevRec,
+        occRec: mode.occRec,
+        detRec: mode.detRec,
+        rpnRec: mode.rpnRec,
+      });
+    });
+  }
+
   return (
     <Modal
       title="View Failure Mode Details"
       visible={isViewModalOpen}
       onCancel={closeViewModal}
       footer={null}
-      width={1000}
+      width={1200}
     >
       {viewData && (
-        <div>
-          <p>
-            <strong>Process / Process Step:</strong> {viewData?.processStep}
-          </p>
-
-          <h3 className="mt-4 mb-2 font-semibold">Failure Modes:</h3>
-          {viewData?.failureModes?.map((mode, index) => (
-            <div
-              key={index}
-              className="border border-gray-200 p-4 mb-4 rounded-lg bg-gray-50"
-            >
-              <p>
-                <strong>Potential Failure Mode:</strong>{" "}
-                {mode.potentialFailureMode}
-              </p>
-              <p>
-                <strong>Potential Failure Effects:</strong>{" "}
-                {mode.potentialFailureEffects}
-              </p>
-              <p>
-                <strong>SEV:</strong> {mode.sev}
-              </p>
-              <p>
-                <strong>OCC:</strong> {mode.occ}
-              </p>
-              <p>
-                <strong>DET:</strong> {mode.det}
-              </p>
-              <p>
-                <strong>RPN:</strong> {mode.rpn}
-              </p>
-              <p>
-                <strong>Actions Recommended:</strong> {mode.actionsRecommended}
-              </p>
-              <hr className="my-2" />
-              <p>
-                <strong>SEV:</strong> {mode.sevRec}
-              </p>
-              <p>
-                <strong>OCC:</strong> {mode.occRec}
-              </p>
-              <p>
-                <strong>DET:</strong> {mode.detRec}
-              </p>
-              <p>
-                <strong>RPN:</strong> {mode.rpnRec}
-              </p>
-            </div>
-          ))}
-        </div>
+        <Table
+          columns={columns}
+          dataSource={tableData}
+          pagination={false}
+          bordered
+        />
       )}
     </Modal>
   );
